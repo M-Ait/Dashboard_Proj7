@@ -10,14 +10,14 @@ import client
 st.set_page_config(layout="wide", page_title='Dashboard Projet 7')
 
 
-@st.cache_data
+@st.cache_data(persist=True)
 def load_data():
     """Cache : pas besoin d'exécuter load_data() à chaque reload"""
-    application1 = pd.read_csv('static/app_test1.csv')
-    application2 = pd.read_csv('static/app_test2.csv')
+    application1 = pd.read_csv(r'static/app_test1.csv')
+    application2 = pd.read_csv(r'static/app_test2.csv')
     application = pd.concat([application1, application2], axis=0, ignore_index=True)
 
-    past_application = pd.read_csv('static/data_train_head.csv')
+    past_application = pd.read_csv(r'static/data_train_head.csv')
     past_application['SK_ID_CURR'] = past_application['SK_ID_CURR'].astype(int)
     for col in past_application.columns:
         if past_application[col].max() == 1:
