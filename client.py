@@ -10,7 +10,7 @@ def client(app_test, shap_values, shap_explainer):
     """Informations relatives à un client"""
     st.title("Informations client")
     url = "https://flask-proj7.onrender.com"
-    response = requests.get(url + "/possible_input", timeout=120).json()
+    response = requests.get(url + "/possible_input", timeout=210).json()
     list_client_id = response['possible_client_ID']
     left, right = st.columns(2)
     left.write("Sélectionner un identifiant :")
@@ -35,7 +35,7 @@ def client(app_test, shap_values, shap_explainer):
             Le seuil de refus est à 0.1
             Une prédiction inférieure à 0.1 est une acceptation du crédit
         """)
-        response1 = requests.get(url + "/predict/" + str(client_id), timeout=10).json()
+        response1 = requests.get(url + "/predict/" + str(client_id), timeout=210).json()
         prediction_initiale = int(response1['prediction_initiale'])
         prediction_revisitee = int(response1['prediction_revisitee'])
         probabilite_refus = response1['probabilite_refus']

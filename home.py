@@ -17,5 +17,12 @@ def home():
         Informations anonymisées du client, prediction et interprétation résultat
     """)
 
+    st.error("""
+        IMPORTANT
+        
+        Si la page "Informations client" n'a pas été utilisée depuis au moins 15 minutes,
+        le chargement de la page peut prendre jusqu'à 3.5 minutes
+        """)
+
     # End of file
     

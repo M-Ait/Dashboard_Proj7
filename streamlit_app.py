@@ -13,28 +13,28 @@ st.set_page_config(layout="wide", page_title='Dashboard Projet 7')
 @st.cache_data(persist=True)
 def load_data():
     """Cache : pas besoin d'exécuter load_data() à chaque reload"""
-    application1 = pd.read_csv(r'static/app_test1.csv')
-    application2 = pd.read_csv(r'static/app_test2.csv')
+    application1 = pd.read_csv('static/app_test1.csv')
+    application2 = pd.read_csv('static/app_test2.csv')
     application = pd.concat([application1, application2], axis=0, ignore_index=True)
 
-    past_application = pd.read_csv(r'static/data_train_head.csv')
+    past_application = pd.read_csv('static/data_train_head.csv')
     past_application['SK_ID_CURR'] = past_application['SK_ID_CURR'].astype(int)
     for col in past_application.columns:
         if past_application[col].max() == 1:
             past_application[col] = past_application[col].astype(int)
 
-    description = pd.read_csv(r'static/HomeCredit_columns_description.csv',
+    description = pd.read_csv('static/HomeCredit_columns_description.csv',
                               encoding='unicode_escape')
-    with open(r'static/shap_explainer_lgbm.p', 'rb') as file:
+    with open('static/shap_explainer_lgbm.p', 'rb') as file:
         shap_explain = pickle.load(file)
 
-    with open(r'static/shap_val01.p', 'rb') as file:
+    with open('static/shap_val01.p', 'rb') as file:
         shap_val01 = pickle.load(file)
-    with open(r'static/shap_val02.p', 'rb') as file:
+    with open('static/shap_val02.p', 'rb') as file:
         shap_val02 = pickle.load(file)
-    with open(r'static/shap_val11.p', 'rb') as file:
+    with open('static/shap_val11.p', 'rb') as file:
         shap_val11 = pickle.load(file)
-    with open(r'static/shap_val12.p', 'rb') as file:
+    with open('static/shap_val12.p', 'rb') as file:
         shap_val12 = pickle.load(file)
     shap_val0 = np.concatenate((shap_val01, shap_val02), axis=0)
     shap_val1 = np.concatenate((shap_val11, shap_val12), axis=0)
