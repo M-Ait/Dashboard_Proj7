@@ -13,6 +13,7 @@ st.set_page_config(layout="wide", page_title='Dashboard Projet 7')
 def load_data():
     """Cache : pas besoin d'exécuter load_data() à chaque reload"""
     application = pd.read_csv('static/app_test.csv')
+    #test = pd.concat([app_test1, app_test2], axis=0, ignore_index=True)
     past_application = pd.read_csv('static/data_train.csv')
     past_application['SK_ID_CURR'] = past_application['SK_ID_CURR'].astype(
         int)
