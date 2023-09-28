@@ -12,7 +12,7 @@ def general(data_train, var_descriptions, data_test, shap_values):
     st.subheader("Exploration des données")
 
     st.text("Echantillon des informations utilisées")
-    st.table(data_train.head())
+    st.table(data_train)
     st.text("Descriptions des colonnes")
     if st.checkbox("Montrer la description des colonnes :eyes:"):
         rows = var_descriptions.sort_values(by='Row')
